@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 10:01 AM
+-- Generation Time: Jun 06, 2021 at 09:49 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -84,6 +84,27 @@ INSERT INTO `country` (`code`, `name`, `population`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jabatan`
+--
+
+CREATE TABLE `jabatan` (
+  `id_jabatan` int(10) NOT NULL,
+  `jabatan` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jabatan`
+--
+
+INSERT INTO `jabatan` (`id_jabatan`, `jabatan`) VALUES
+(1, 'KETUA'),
+(2, 'WAKIL KETU'),
+(3, 'SEKRETARIS'),
+(4, 'BENDAHARA');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jenis`
 --
 
@@ -132,6 +153,30 @@ INSERT INTO `mahasiswa` (`id`, `nim`, `nama`, `jekel`, `id_prodi`, `email`, `ala
 (7, '19110007', 'Miza Yunita', 'P', 1, 'miza@gmail.com', 'Maninjau'),
 (8, '19110008', 'Dafa Agung Prasetya', 'L', 1, 'agung@gmail.com', 'Lampung'),
 (9, '19110009', 'Sovi Febriani', 'P', 2, 'sovi@gmail.com', 'Padang');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organisasi`
+--
+
+CREATE TABLE `organisasi` (
+  `id` int(10) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `jenis_kelamin` varchar(1) NOT NULL,
+  `alamat` varchar(30) NOT NULL,
+  `jabatan` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `organisasi`
+--
+
+INSERT INTO `organisasi` (`id`, `nama`, `tgl_lahir`, `jenis_kelamin`, `alamat`, `jabatan`) VALUES
+(1, 'Srintika', '2000-06-10', 'P', 'Bukittinggi', 'KETUA'),
+(2, 'Fitri', '2000-12-28', 'P', 'Agam', 'WAKIL KETU'),
+(3, 'Fauziah', '2000-04-10', 'P', 'Bukittinggi', 'BENDAHARA');
 
 -- --------------------------------------------------------
 
@@ -197,6 +242,12 @@ ALTER TABLE `country`
   ADD PRIMARY KEY (`code`);
 
 --
+-- Indexes for table `jabatan`
+--
+ALTER TABLE `jabatan`
+  ADD PRIMARY KEY (`id_jabatan`);
+
+--
 -- Indexes for table `jenis`
 --
 ALTER TABLE `jenis`
@@ -208,6 +259,12 @@ ALTER TABLE `jenis`
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_prodi` (`id_prodi`);
+
+--
+-- Indexes for table `organisasi`
+--
+ALTER TABLE `organisasi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `prodi`
@@ -232,6 +289,12 @@ ALTER TABLE `barang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `jabatan`
+--
+ALTER TABLE `jabatan`
+  MODIFY `id_jabatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `jenis`
 --
 ALTER TABLE `jenis`
@@ -242,6 +305,12 @@ ALTER TABLE `jenis`
 --
 ALTER TABLE `mahasiswa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `organisasi`
+--
+ALTER TABLE `organisasi`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prodi`
