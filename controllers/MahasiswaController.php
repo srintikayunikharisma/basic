@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\mahasiswa;
+use app\models\Mahasiswa;
 use app\models\MahasiswaSearch;
 use app\models\Prodi;
 use yii\web\Controller;
@@ -65,7 +65,7 @@ class MahasiswaController extends Controller
      */
     public function actionCreate()
     {
-        $model = new mahasiswa();
+        $model = new Mahasiswa();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->tgl_lahir = \Yii::$app->formatter->asDate($model->tgl_lahir, "yyyy-MM-dd");
@@ -134,12 +134,12 @@ class MahasiswaController extends Controller
      * Finds the mahasiswa model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return mahasiswa the loaded model
+     * @return Mahasiswa the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = mahasiswa::findOne($id)) !== null) {
+        if (($model = Mahasiswa::findOne($id)) !== null) {
             return $model;
         }
 
